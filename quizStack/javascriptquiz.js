@@ -84,10 +84,8 @@ function selectedAnswer() {
   return answer;
 }
 // show the results of the quiz
-function showResults() {}
-
-// start the quiz immediately
-startQuiz();
-submit_conatiner.addEventListener("click", showResults);
+submit_button.addEventListener("click", function () {
+  const answer = getSelected();
+});
 
 // Questions in the quiz
