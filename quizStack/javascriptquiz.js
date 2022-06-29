@@ -74,6 +74,15 @@ function deselectAnswers() {
   answersEls.forEach((answersEl) => answersEl.checked == false);
 }
 
+function selectedAnswer() {
+  let answer;
+  answersEls.forEach((answersEl) => {
+    if (answersEl.checked) {
+      answer = answersEl.id;
+    }
+  });
+  return answer;
+}
 // show the results of the quiz
 function showResults() {}
 
