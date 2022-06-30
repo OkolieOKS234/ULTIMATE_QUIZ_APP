@@ -41,6 +41,32 @@ const Questions = [
   },
 
   //   fourth question
+  {
+    question:
+      "When a user views a page containing a JavaScript program, which machine actually executes the script?",
+    a: "User’s machine running a Web browser",
+    b: "The Web server",
+    c: " A central machine deep within Netscape’s corporate offices",
+    d: "None of the above",
+    correctAnswer: "a",
+  },
+  // fifth question
+  {
+    question: "Which among this is a feature of Javascript functions",
+    a: "Return a value",
+    b: "Accept parameters and Return a value",
+    c: "Accept parameters",
+    d: "None of the above",
+    correctAnswer: "c",
+  },
+  {
+    question: "Which of the following is not a correct naming convention",
+    a: "_names_of_dog",
+    b: "names_of-dog",
+    c: "2namesofdog",
+    d: "None of the above",
+    correctAnswer: "c",
+  },
   {},
 ];
 
