@@ -55,10 +55,7 @@ const Questions = [
     correctAnswer: "c",
   },
   //   fourth question
-  {
-    question:
-      "When a user views a page containing a JavaScript program, which machine actually executes the script?",
-  },
+  {},
 ];
 
 // start the quiz immediately

@@ -67,7 +67,15 @@ const Questions = [
     d: "None of the above",
     correctAnswer: "c",
   },
-  {},
+  {
+    question:
+      "What is used to display plain text in the console of the Chrome Developer tools",
+    a: "console.log()",
+    b: "console.table()",
+    c: "alert()",
+    d: "console.error()",
+    correctAnswer: "a",
+  },
 ];
 
 // storing the quiz answers and submit button in a variable
@@ -76,7 +84,7 @@ const optiona = document.querySelector("#a_text");
 const optionb = document.querySelector("#b_text");
 const optionc = document.querySelector("#c_text");
 const optiond = document.querySelector("#d_text");
-const questionE = document.querySelector("#question");
+const questionE = document.getElementById("question");
 const answersEls = document.querySelectorAll(".answer");
 const submit_button = document.querySelector("#submit");
 
@@ -84,6 +92,7 @@ const submit_button = document.querySelector("#submit");
 
 let currentQuiz = 0;
 let scoreUpdate = 0;
+startQuiz();
 function startQuiz() {
   deselectAnswers();
   const currentQuizData = Questions[currentQuiz];
@@ -109,9 +118,16 @@ function selectedAnswer() {
   });
   return answer;
 }
+
 // show the results of the quiz
-submit_button.addEventListener("click", function () {
-  const answer = getSelected();
-});
+// submit_button.addEventListener("click", function () {
+//   const answer = getSelected();
+//   if (answer) {
+//     if (answer === Questions[currentQuiz].correctAnswer) {
+//       score++;
+//     }
+//     currentQuiz++;
+//   }
+// });
 
 // Questions in the quiz
