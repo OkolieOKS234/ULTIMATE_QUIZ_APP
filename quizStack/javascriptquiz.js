@@ -7,7 +7,7 @@ const Questions = [
     b: "Javascript Object Notation",
     c: "Javascript Oriented Notation",
     d: "Javascript Object Native",
-    correctAnswer: "b",
+    correct: "b",
   },
   // second question
   {
@@ -17,7 +17,7 @@ const Questions = [
     b: "Microsoft",
     c: "LiveWire",
     d: "Navigator",
-    correctAnswer: "d",
+    correct: "d",
   },
 
   {
@@ -27,7 +27,7 @@ const Questions = [
     c: "The End Statement",
     d: "None of the Above",
 
-    correctAnswer: "a",
+    correct: "a",
   },
   // third question
   {
@@ -37,7 +37,7 @@ const Questions = [
     b: "Sending a form's contents by email",
     c: "Storing the form's content to a database file on the server",
     d: "None of the above",
-    correctAnswer: "c",
+    correct: "c",
   },
 
   //   fourth question
@@ -48,7 +48,7 @@ const Questions = [
     b: "The Web server",
     c: " A central machine deep within Netscape’s corporate offices",
     d: "None of the above",
-    correctAnswer: "a",
+    correct: "a",
   },
   // fifth question
   {
@@ -57,7 +57,7 @@ const Questions = [
     b: "Accept parameters and Return a value",
     c: "Accept parameters",
     d: "None of the above",
-    correctAnswer: "c",
+    correct: "c",
   },
   {
     question: "Which of the following is not a correct naming convention",
@@ -65,7 +65,7 @@ const Questions = [
     b: "names_of-dog",
     c: "2namesofdog",
     d: "None of the above",
-    correctAnswer: "c",
+    correct: "c",
   },
   {
     question:
@@ -74,7 +74,7 @@ const Questions = [
     b: "console.table()",
     c: "alert()",
     d: "console.error()",
-    correctAnswer: "a",
+    correct: "a",
   },
 ];
 
@@ -120,14 +120,23 @@ function selectedAnswer() {
 }
 
 // show the results of the quiz
-// submit_button.addEventListener("click", function () {
-//   const answer = getSelected();
-//   if (answer) {
-//     if (answer === Questions[currentQuiz].correctAnswer) {
-//       score++;
-//     }
-//     currentQuiz++;
-//   }
-// });
+submit_button.addEventListener("click", function () {
+  const answer = selectedAnswer();
+  if (answer) {
+    if (answer === Questions[currentQuiz].correct) {
+      scoreUpdate++;
+    }
+    currentQuiz++;
+    // this statement makes it go next so long it meets the requirement of remaining number of questions
+    if (currentQuiz < Questions.length) {
+      startQuiz();
+    }
+    if (currentQuiz === Questions.length - 1) {
+      submit_button.textContent = "Show Score";
+    } else {
+      console.log("Done");
+    }
+  }
+});
 
 // Questions in the quiz
