@@ -90,7 +90,7 @@ const submit_button = document.querySelector("#submit");
 
 // function for starting the quiz
 
-let currentQuiz = 0;
+let currentQuiz = Math.floor(Math.random() * 5);
 let scoreUpdate = 0;
 startQuiz();
 function startQuiz() {
