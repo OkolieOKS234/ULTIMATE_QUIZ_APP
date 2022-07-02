@@ -76,6 +76,22 @@ const Questions = [
     d: "console.error()",
     correct: "a",
   },
+  {
+    question: "What is JavaScript?",
+    a: "JavaScript is a scripting language used to make the website interactive",
+    b: "JavaScript is an assembly language used to make the website interactive",
+    c: "JavaScript is a compiled language used to make the website interactive",
+    d: "None of the above",
+    correct: "a",
+  },
+  {
+    question: "var js = (function(x) {return x*x;}(10));",
+    a: "Exception will be thrown",
+    b: "Memory leak",
+    c: "Error",
+    d: "Yes",
+    correct: "d",
+  },
 ];
 
 // storing the quiz answers and submit button in a variable
