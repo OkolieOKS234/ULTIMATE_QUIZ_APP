@@ -19,6 +19,7 @@ const Questions = [
     d: "sys.version",
     correct: "a",
   },
+  {},
 ];
 
 // storing the quiz answers and submit button in a variable

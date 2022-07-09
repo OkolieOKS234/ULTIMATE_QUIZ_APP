@@ -95,7 +95,7 @@ const Questions = [
 ];
 
 // storing the quiz answers and submit button in a variable
-const quizcontainer = document.querySelector(".quiz");
+const quizcontainer = document.querySelector("#quiz");
 const optiona = document.querySelector("#a_text");
 const optionb = document.querySelector("#b_text");
 const optionc = document.querySelector("#c_text");
@@ -106,13 +106,13 @@ const submit_button = document.querySelector("#submit");
 
 // function for starting the quiz
 
-let currentQuiz = Math.floor(Math.random() * 5);
+let currentQuiz = 0;
 let scoreUpdate = 0;
 startQuiz();
 function startQuiz() {
   deselectAnswers();
   const currentQuizData = Questions[currentQuiz];
-
+  console.log(currentQuizData.correct);
   questionE.textContent = currentQuizData.question;
   optiona.textContent = currentQuizData.a;
   optionb.textContent = currentQuizData.b;
@@ -138,8 +138,9 @@ function selectedAnswer() {
 // show the results of the quiz
 submit_button.addEventListener("click", function () {
   const answer = selectedAnswer();
+  const currentQuizData = Questions[currentQuiz];
   if (answer) {
-    if (answer === Questions[currentQuiz].correct) {
+    if (answer === currentQuizData.correct) {
       scoreUpdate++;
     }
     currentQuiz++;
@@ -147,11 +148,9 @@ submit_button.addEventListener("click", function () {
     if (currentQuiz < Questions.length) {
       startQuiz();
     }
-    if (currentQuiz === Questions.length - 1) {
-      submit_button.textContent = "Show Score";
-    } else {
-      console.log("Done");
-    }
+  } else {
+    quiz.textContent = `<h2>You scored${scoreUpdate}/${Questions.length}</h2>
+    <button onclick="location.reload()"></button>`;
   }
 });
 
