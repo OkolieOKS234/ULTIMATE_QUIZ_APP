@@ -95,24 +95,26 @@ const Questions = [
 ];
 
 // storing the quiz answers and submit button in a variable
-const quizcontainer = document.querySelector("#quiz");
-const optiona = document.querySelector("#a_text");
-const optionb = document.querySelector("#b_text");
-const optionc = document.querySelector("#c_text");
-const optiond = document.querySelector("#d_text");
+const quizcontainer = document.getElementById("quiz");
+const optiona = document.getElementById("a_text");
+const optionb = document.getElementById("b_text");
+const optionc = document.getElementById("c_text");
+const optiond = document.getElementById("d_text");
 const questionE = document.getElementById("question");
 const answersEls = document.querySelectorAll(".answer");
-const submit_button = document.querySelector("#submit");
-
-// function for starting the quiz
+const submit_button = document.getElementById("submit");
 
 let currentQuiz = 0;
-let scoreUpdate = 0;
+let score = 0;
+
+// start the Quiz
 startQuiz();
+
 function startQuiz() {
-  deselectAnswers();
+  // deselectAnswers();
   const currentQuizData = Questions[currentQuiz];
-  console.log(currentQuizData.correct);
+  console.log(currentQuizData);
+
   questionE.textContent = currentQuizData.question;
   optiona.textContent = currentQuizData.a;
   optionb.textContent = currentQuizData.b;
@@ -120,38 +122,36 @@ function startQuiz() {
   optiond.textContent = currentQuizData.d;
 }
 
-// making the options to be default
-function deselectAnswers() {
-  answersEls.forEach((answersEl) => answersEl.checked == false);
-}
+// Making sure each answer is deselected
+deselectAnswers = () => {
+  answersEls.forEach((answerEl) => (answerEl.checked = false));
+};
 
-function selectedAnswer() {
+// for each option that get selected
+function getSelected() {
   let answer;
-  answersEls.forEach((answersEl) => {
-    if (answersEl.checked) {
-      answer = answersEl.id;
+  answersEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
     }
   });
   return answer;
 }
 
-// show the results of the quiz
-submit_button.addEventListener("click", function () {
-  const answer = selectedAnswer();
-  const currentQuizData = Questions[currentQuiz];
+// submitting each answer
+
+submit_button.addEventListener("click", () => {
+  const answer = getSelected();
   if (answer) {
-    if (answer === currentQuizData.correct) {
-      scoreUpdate++;
+    if (answer === Questions[currentQuiz].correct) {
+      score++;
     }
     currentQuiz++;
-    // this statement makes it go next so long it meets the requirement of remaining number of questions
+
     if (currentQuiz < Questions.length) {
       startQuiz();
+    } else {
+      quizcontainer.textContent = `You scored ${score}/ ${Questions.length}`;
     }
-  } else {
-    quiz.textContent = `<h2>You scored${scoreUpdate}/${Questions.length}</h2>
-    <button onclick="location.reload()"></button>`;
   }
 });
-
-// Questions in the quiz
