@@ -19,23 +19,47 @@ const Questions = [
     d: "sys.version",
     correct: "a",
   },
-  {},
+  {
+    question: "Is Python case sensitive when dealing with identifiers?",
+    a: "no",
+    b: "yes",
+    c: "machine dependent",
+    d: "none of the mentioned",
+    correct: "a",
+  },
+  {
+    question:
+      "What will be the value of the following Python expression? 4 + 3 % 5",
+    a: "no",
+    b: "yes",
+    c: "machine dependent",
+    d: "none of the mentioned",
+    correct: "a",
+  },
+  {
+    question: "Which keyword is used for function in Python language?",
+    a: "Function",
+    b: "Fun",
+    c: "Def",
+    d: "none of the mentioned",
+    correct: "c",
+  },
 ];
 
 // storing the quiz answers and submit button in a variable
-const quizcontainer = document.querySelector(".quiz");
-const optiona = document.querySelector("#a_text");
-const optionb = document.querySelector("#b_text");
-const optionc = document.querySelector("#c_text");
-const optiond = document.querySelector("#d_text");
+const quizcontainer = document.getElementById("quiz");
+const optiona = document.getElementById("a_text");
+const optionb = document.getElementById("b_text");
+const optionc = document.getElementById("c_text");
+const optiond = document.getElementById("d_text");
 const questionE = document.getElementById("question");
 const answersEls = document.querySelectorAll(".answer");
-const submit_button = document.querySelector("#submit");
+const submit_button = document.getElementById("submit");
 
 // function for starting the quiz
 
-let currentQuiz = Math.floor(Math.random() * Questions.length);
-let scoreUpdate = 0;
+let currentQuiz = 0;
+let score = 0;
 startQuiz();
 function startQuiz() {
   deselectAnswers();
@@ -66,19 +90,17 @@ function selectedAnswer() {
 // show the results of the quiz
 submit_button.addEventListener("click", function () {
   const answer = selectedAnswer();
+  let scoreCalculated = (score / Questions.length) * 100;
   if (answer) {
     if (answer === Questions[currentQuiz].correct) {
-      scoreUpdate++;
+      score++;
     }
     currentQuiz++;
     // this statement makes it go next so long it meets the requirement of remaining number of questions
     if (currentQuiz < Questions.length) {
       startQuiz();
-    }
-    if (currentQuiz === Questions.length - 1) {
-      submit_button.textContent = "Show Score";
     } else {
-      console.log("Done");
+      quizcontainer.textContent = `You scored ${scoreCalculated}%`;
     }
   }
 });

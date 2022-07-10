@@ -111,7 +111,7 @@ let score = 0;
 startQuiz();
 
 function startQuiz() {
-  // deselectAnswers();
+  deselectAnswers();
   const currentQuizData = Questions[currentQuiz];
   console.log(currentQuizData);
 
