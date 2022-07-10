@@ -104,7 +104,7 @@ const questionE = document.getElementById("question");
 const answersEls = document.querySelectorAll(".answer");
 const submit_button = document.getElementById("submit");
 
-let currentQuiz = 0;
+let currentQuiz = Math.floor(Math.random() * 10);
 let score = 0;
 
 // start the Quiz
@@ -142,6 +142,7 @@ function getSelected() {
 
 submit_button.addEventListener("click", () => {
   const answer = getSelected();
+  let scoreCalculated = (score / Questions.length) * 100;
   if (answer) {
     if (answer === Questions[currentQuiz].correct) {
       score++;
@@ -151,7 +152,7 @@ submit_button.addEventListener("click", () => {
     if (currentQuiz < Questions.length) {
       startQuiz();
     } else {
-      quizcontainer.textContent = `You scored ${score}/ ${Questions.length}`;
+      quizcontainer.textContent = `You scored  ${scoreCalculated}%`;
     }
   }
 });
