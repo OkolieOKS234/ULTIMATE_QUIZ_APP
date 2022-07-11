@@ -104,14 +104,14 @@ const questionE = document.getElementById("question");
 const answersEls = document.querySelectorAll(".answer");
 const submit_button = document.getElementById("submit");
 
-let currentQuiz = Math.floor(Math.random() * 10);
+let currentQuiz = 0;
 let score = 0;
 
 // start the Quiz
 startQuiz();
 
 function startQuiz() {
-  deselectAnswers();
+  // deselectAnswers();
   const currentQuizData = Questions[currentQuiz];
   console.log(currentQuizData);
 
